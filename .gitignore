@@ -1,0 +1,12 @@
+build
+bin
+
+.vscode
+
+forces-0.txt
+grid.h5
+iterations-0.txt
+logs
+solution
+view.log
+.logamgx
