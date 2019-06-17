@@ -2,6 +2,7 @@ build
 bin
 
 .vscode
+configme.sh
 
 forces-0.txt
 grid.h5
@@ -10,3 +11,4 @@ logs
 solution
 view.log
 .logamgx
+*.xmf
