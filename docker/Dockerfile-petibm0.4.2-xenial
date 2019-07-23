@@ -1,6 +1,6 @@
 # Dockerfile for decoupled IBPM with PetIBM.
 
-FROM mesnardo/petibm:0.4.1-GPU-OpenMPI-xenial
+FROM barbagroup/petibm:0.4.2-GPU-OpenMPI-xenial
 MAINTAINER Olivier Mesnard <mesnardo@gwu.edu>
 
 # Install basic requirements.
