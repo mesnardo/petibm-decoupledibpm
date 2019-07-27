@@ -5,6 +5,7 @@
 
 #include "lietal2016.h"
 #include "oscillatingcylinder.h"
+#include "oscillatingsphere.h"
 
 typedef std::shared_ptr<LietAl2016Solver> Solver;
 
@@ -27,6 +28,8 @@ PetscErrorCode createSolver(
         solver = std::make_shared<LietAl2016Solver>(comm, config);
     else if (name == "oscillating_cylinder")
         solver = std::make_shared<OscillatingCylinderSolver>(comm, config);
+    else if (name == "oscillating_sphere")
+        solver = std::make_shared<OscillatingSphereSolver>(comm, config);
     else
         SETERRQ(comm, PETSC_ERR_ARG_WRONG,
                 "Accepted values for -solver are: "
