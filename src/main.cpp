@@ -6,6 +6,7 @@
 #include "lietal2016.h"
 #include "oscillatingcylinder.h"
 #include "oscillatingsphere.h"
+#include "translatingcylinder.h"
 
 typedef std::shared_ptr<LietAl2016Solver> Solver;
 
@@ -28,6 +29,8 @@ PetscErrorCode createSolver(
         solver = std::make_shared<LietAl2016Solver>(comm, config);
     else if (name == "oscillating_cylinder")
         solver = std::make_shared<OscillatingCylinderSolver>(comm, config);
+    else if (name == "translating_cylinder")
+        solver = std::make_shared<TranslatingCylinderSolver>(comm, config);
     else if (name == "oscillating_sphere")
         solver = std::make_shared<OscillatingSphereSolver>(comm, config);
     else
