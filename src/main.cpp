@@ -36,7 +36,8 @@ PetscErrorCode createSolver(
     else
         SETERRQ(comm, PETSC_ERR_ARG_WRONG,
                 "Accepted values for -solver are: "
-                "'li_et_al_2016' and 'oscillating_cylinder'.");
+                "'li_et_al_2016', 'oscillating_cylinder',"
+                "'translating_cylinder', and 'oscillating_sphere'.");
 
     PetscFunctionReturn(0);
 }  // createSolver

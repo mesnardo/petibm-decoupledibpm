@@ -34,8 +34,7 @@ PetscErrorCode OscillatingSphereSolver::init(const MPI_Comm &world,
 
     const YAML::Node &config_kin = node["bodies"][0]["kinematics"];
     f = config_kin["f"].as<PetscReal>(0.0);
-    PetscReal Dc = config_kin["D"].as<PetscReal>(1.0);
-    PetscReal Am = config_kin["Am"].as<PetscReal>(0.0);
+    Am = config_kin["Am"].as<PetscReal>(0.0);
     Um = 2.0 * PETSC_PI * f * Am;
     Xc0 = config_kin["center"][0].as<PetscReal>(0.0);
     Yc0 = config_kin["center"][1].as<PetscReal>(0.0);
