@@ -9,7 +9,6 @@ allfigures
 
 *.sif
 
-figures
 forces-0.txt
 grid.h5
 iterations-0.txt
