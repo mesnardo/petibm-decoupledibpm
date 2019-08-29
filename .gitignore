@@ -1,14 +1,24 @@
 build
 bin
 
+__pycache__
+
 .vscode
 configme.sh
+allfigures
 
+*.sif
+
+figures
 forces-0.txt
 grid.h5
 iterations-0.txt
 logs
+slurm*.out
+slurm*.err
 solution
+stderr.txt
+stdout.txt
 view.log
 .logamgx
 *.xmf
