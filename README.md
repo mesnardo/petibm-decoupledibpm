@@ -30,8 +30,6 @@
 **Figure:** Profile of the velocity components ($u$: left, $v$: right) at four locations along the centerline for various phase angles $\phi$.
 
 ![oscillatingcylinderRe100_drag_coefficient](runs/oscillatingcylinderRe100/figures/drag_coefficient.png)
-![oscillatingcylinderRe100_drag_coefficient](runs/oscillatingcylinderRe100/figures/drag_coefficient_zoom.png)
-![oscillatingcylinderRe100_drag_coefficient](runs/oscillatingcylinderRe100/figures/drag_coefficient_zoom2.png)
 **Figure:** History of the drag coefficient of the inline oscillating cylinder obtained using different algorithms. We also show zooms at early and developed stages.
 
 ![oscillatingcylinderRe100_drag_coefficient_dt](runs/oscillatingcylinderRe100/figures/drag_coefficient_dt.png)
