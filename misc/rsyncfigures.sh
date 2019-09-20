@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Rsync data to be uploaded to Zenodo.
+# Rsync all figures.
 
 scriptdir="$( cd "$(dirname "$0")" ; pwd -P )"
 rootdir="$( cd "$(dirname "$scriptdir")" ; pwd -P )"
