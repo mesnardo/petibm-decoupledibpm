@@ -475,6 +475,16 @@ Pressure coefficient along the cylinder surface.
 
 ---
 
+### 2D flow over stationary cylinder (Re=40, pressure)
+
+.center[
+
+<img src="runs/lagrangian-resolution/cylinder2dRe40/figures/pressure_all_zoom.png" alt="cylinder2dRe40_pressure_lag_zoom" width="550">
+
+]
+
+---
+
 ### 2D flow over stationary cylinder (Re=40, x-velocity)
 
 .center[
