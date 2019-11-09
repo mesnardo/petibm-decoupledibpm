@@ -7,6 +7,7 @@
 #include "oscillatingcylinder.h"
 #include "oscillatingsphere.h"
 #include "translatingcylinder.h"
+#include "dragonfly.h"
 
 typedef std::shared_ptr<LietAl2016Solver> Solver;
 
@@ -33,11 +34,14 @@ PetscErrorCode createSolver(
         solver = std::make_shared<TranslatingCylinderSolver>(comm, config);
     else if (name == "oscillating_sphere")
         solver = std::make_shared<OscillatingSphereSolver>(comm, config);
+    else if (name == "dragonfly")
+        solver = std::make_shared<DragonflySolver>(comm, config);
     else
         SETERRQ(comm, PETSC_ERR_ARG_WRONG,
                 "Accepted values for -solver are: "
                 "'li_et_al_2016', 'oscillating_cylinder',"
-                "'translating_cylinder', and 'oscillating_sphere'.");
+                "'translating_cylinder', 'oscillating_sphere', and"
+                "'dragonfly'.");
 
     PetscFunctionReturn(0);
 }  // createSolver
