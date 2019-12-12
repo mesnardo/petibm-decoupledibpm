@@ -34,10 +34,17 @@ PetscErrorCode DragonflySolver::init(const MPI_Comm &world,
 
     ierr = PetscLogStagePush(stageInitialize); CHKERRQ(ierr);
 
-    const YAML::Node &config_kin = node["bodies"][0]["kinematics"];
+    const YAML::Node &config_bodies = node["bodies"];
+    PetscInt nBodies = config_bodies.size();
+    params.resize(nBodies);
     std::string simudir = node["directory"].as<std::string>();
-    datadir = simudir + "/" + config_kin["folder"].as<std::string>();
-    nt_cycle = config_kin["nt_cycle"].as<PetscInt>();
+    for (std::size_t i = 0; i < nBodies; ++i)
+    {
+        const YAML::Node &config_body = config_bodies[i]["kinematics"];
+        params[i].nt_cycle = config_body["nt_cycle"].as<PetscInt>();
+        params[i].folder = simudir + "/" +
+                           config_body["folder"].as<std::string>();
+    }
 
     ierr = PetscLogStagePop(); CHKERRQ(ierr);
 
@@ -47,18 +54,21 @@ PetscErrorCode DragonflySolver::init(const MPI_Comm &world,
 PetscErrorCode DragonflySolver::setCoordinatesBodies(const PetscReal &ti)
 {
     PetscErrorCode ierr;
-    std::string filepath;
-    std::stringstream ss;
-    PetscInt n = ite % nt_cycle;
-    petibm::type::SingleBody &body = bodies->bodies[0];
-    PetscInt numPts;
 
     PetscFunctionBeginUser;
 
     // load body coordinates from file
-    ss << std::setfill('0') << std::setw(7) << n;
-    filepath = datadir + "/position_" + ss.str() + ".txt";
-    ierr = petibm::io::readLagrangianPoints(filepath, numPts, body->coords);
+    for (size_t i = 0; i < bodies->nBodies; ++i)
+    {
+        PetscInt n = ite % params[i].nt_cycle;
+        std::stringstream ss;
+        ss << std::setfill('0') << std::setw(7) << n;
+        petibm::type::SingleBody &body = bodies->bodies[i];
+        std::string filepath;
+        filepath = params[i].folder + "/position_" + ss.str() + ".txt";
+        PetscInt numPts;
+        ierr = petibm::io::readLagrangianPoints(filepath, numPts, body->coords);
+    }
 
     PetscFunctionReturn(0);
 } // DragonflySolver::setCoordinatesBodies
@@ -66,29 +76,41 @@ PetscErrorCode DragonflySolver::setCoordinatesBodies(const PetscReal &ti)
 PetscErrorCode DragonflySolver::setVelocityBodies(const PetscReal &ti)
 {
     PetscErrorCode ierr;
-    petibm::type::RealVec2D UB_vec;
+    PetscInt nBodies = bodies->nBodies;
+    std::vector<Vec> unPacked(nBodies);
     PetscReal **UB_arr;
-    petibm::type::SingleBody &body = bodies->bodies[0];
-    std::string filepath;
-    std::stringstream ss;
-    PetscInt n = ite % nt_cycle;
-    PetscInt numPts;
 
     PetscFunctionBeginUser;
 
-    // load velocity data from file
-    ss << std::setfill('0') << std::setw(7) << n;
-    filepath = datadir + "/velocity_" + ss.str() + ".txt";
-    ierr = petibm::io::readLagrangianPoints(filepath, numPts, UB_vec);
-
     // update the boundary velocity array
-    ierr = DMDAVecGetArrayDOF(body->da, UB, &UB_arr); CHKERRQ(ierr);
-    for (PetscInt k = body->bgPt; k < body->edPt; k++)
+    ierr = DMCompositeGetAccessArray(
+        bodies->dmPack, UB, nBodies, nullptr, unPacked.data()); CHKERRQ(ierr);
+
+    for (size_t i = 0; i < nBodies; ++i)
     {
-        for (PetscInt d = 0; d < body->dim; d++)
-            UB_arr[k][d] = UB_vec[k][d];
+        petibm::type::SingleBody &body = bodies->bodies[i];
+        // load velocity data from file
+        PetscInt n = ite % params[i].nt_cycle;
+        std::stringstream ss;
+        ss << std::setfill('0') << std::setw(7) << n;
+        std::string filepath;
+        filepath = params[i].folder + "/velocity_" + ss.str() + ".txt";
+        petibm::type::RealVec2D UB_vec;
+        PetscInt numPts;
+        ierr = petibm::io::readLagrangianPoints(filepath, numPts, UB_vec);
+        ierr = DMDAVecGetArrayDOF(
+            body->da, unPacked[i], &UB_arr); CHKERRQ(ierr);
+        for (PetscInt k = body->bgPt; k < body->edPt; ++k)
+        {
+            for (PetscInt d = 0; d < body->dim; d++)
+                UB_arr[k][d] = UB_vec[k][d];
+        }
+        ierr = DMDAVecRestoreArrayDOF(
+            body->da, unPacked[i], &UB_arr); CHKERRQ(ierr);
     }
-    ierr = DMDAVecRestoreArrayDOF(body->da, UB, &UB_arr); CHKERRQ(ierr);
+
+    ierr = DMCompositeRestoreAccessArray(
+        bodies->dmPack, UB, nBodies, nullptr, unPacked.data()); CHKERRQ(ierr);
 
     PetscFunctionReturn(0);
 } // DragonflySolver::setVelocityBodies

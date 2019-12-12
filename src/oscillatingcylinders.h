@@ -2,18 +2,21 @@
 
 #include "lietal2016.h"
 
-struct BodyParameters
+struct OscillatingCylinder
 {
-    PetscInt nt_cycle;
-    std::string folder;
-};  // BodyParameters
+    PetscReal f;
+    PetscReal Am;
+    PetscReal Um;
+    PetscReal Xc0;
+    PetscReal Yc0;
+};  // OscillatingCylinder
 
-class DragonflySolver : public LietAl2016Solver
+class OscillatingCylindersSolver : public LietAl2016Solver
 {
 public:
-    DragonflySolver() = default;
-    DragonflySolver(const MPI_Comm &world, const YAML::Node &node);
-    ~DragonflySolver();
+    OscillatingCylindersSolver() = default;
+    OscillatingCylindersSolver(const MPI_Comm &world, const YAML::Node &node);
+    ~OscillatingCylindersSolver();
     using LietAl2016Solver::destroy;
     using LietAl2016Solver::advance;
     using LietAl2016Solver::write;
@@ -22,10 +25,8 @@ public:
     PetscErrorCode init(const MPI_Comm &world, const YAML::Node &node);
 
 protected:
-    std::vector<BodyParameters> params;
-    std::string datadir;
-    PetscInt nt_cycle;
+    std::vector<OscillatingCylinder> params;
     PetscErrorCode setCoordinatesBodies(const PetscReal &ti);
     PetscErrorCode setVelocityBodies(const PetscReal &ti);
 
-};  // DragonflySolver
+};  // OscillatingCylindersSolver

@@ -245,7 +245,7 @@ PetscErrorCode LietAl2016Solver::algorithm3()
     PetscFunctionReturn(0);
 }  // algorithm3
 
-PetscErrorCode LietAl2016Solver::writeForcesASCII()
+PetscErrorCode LietAl2016Solver::writeForcesASCII_old()
 {
     PetscErrorCode ierr;
     petibm::type::RealVec1D fAvg(3, 0.0);

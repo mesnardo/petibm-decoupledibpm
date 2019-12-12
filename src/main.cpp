@@ -5,6 +5,7 @@
 
 #include "lietal2016.h"
 #include "oscillatingcylinder.h"
+#include "oscillatingcylinders.h"
 #include "oscillatingsphere.h"
 #include "translatingcylinder.h"
 #include "dragonfly.h"
@@ -30,6 +31,8 @@ PetscErrorCode createSolver(
         solver = std::make_shared<LietAl2016Solver>(comm, config);
     else if (name == "oscillating_cylinder")
         solver = std::make_shared<OscillatingCylinderSolver>(comm, config);
+    else if (name == "oscillating_cylinders")
+        solver = std::make_shared<OscillatingCylindersSolver>(comm, config);
     else if (name == "translating_cylinder")
         solver = std::make_shared<TranslatingCylinderSolver>(comm, config);
     else if (name == "oscillating_sphere")

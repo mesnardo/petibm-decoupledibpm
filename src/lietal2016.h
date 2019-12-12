@@ -27,6 +27,6 @@ protected:
     PetscErrorCode algorithm1();
     PetscErrorCode algorithm2();
     PetscErrorCode algorithm3();
-    PetscErrorCode writeForcesASCII();
+    PetscErrorCode writeForcesASCII_old();
 
 };  // LietAl2016Solver
