@@ -2,6 +2,7 @@ build
 bin
 
 __pycache__
+.ipynb_checkpoints
 
 .vscode
 configme.sh
@@ -13,6 +14,7 @@ forces-0.txt
 grid.h5
 iterations-0.txt
 logs
+output
 slurm*.out
 slurm*.err
 solution
