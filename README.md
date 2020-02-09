@@ -6,16 +6,16 @@
 
 ## Flow over a stationary circular cylinder ($Re=40$ and $100$)
 
-![cylinderRe40_vorticity](runs/cylinder2dRe40/figures/vorticity.png)
+![cylinderRe40_vorticity](runs/cylinder2dRe40/189_markers/figures/wz_0005000.png)
 **Figure:** Vorticity contours around the cylinder at Reynolds number $40$. (Contour levels between $-3D/U_\infty$ and $3D/U_\infty$ with increments of $0.4$.)
 
-![cylinderRe100_vorticity](runs/cylinder2dRe100/figures/vorticity.png)
+![cylinderRe100_vorticity](runs/cylinder2dRe100/189_markers/figures/wz_0020000.png)
 **Figure:** Vorticity contours around the cylinder at Reynolds number $100$ after $200$ time units of flow simulation. (Contour levels between $-3D/U_\infty$ and $3D/U_\infty$ with increments of $0.4$.)
 
-![cylinderRe40_pressure_coefficient](runs/cylinder2dRe40/figures/pressure_coefficient.png)
+![cylinderRe40_pressure_coefficient](runs/cylinder2dRe40/189_markers/figures/cp_0005000.png)
 **Figure:** Pressure coefficient along the upper and lower surfaces of the cylinder at Reynolds number $40$. We compare with the results from Li et al. (2016).
 
-![cylinderRe100_pressure_coefficient](runs/cylinder2dRe100/figures/pressure_coefficient.png)
+![cylinderRe100_pressure_coefficient](runs/cylinder2dRe100/189_markers/figures/pressure_coefficient.png)
 **Figure:** Pressure coefficient along the upper and lower surfaces of the cylinder at Reynolds number $100$. We compare with the results from Li et al. (2016).
 
 ## Flow around an inline oscillating circular cylinder ($Re=100$)
@@ -47,11 +47,14 @@
 
 ## Flow around an impulsively started circular cylinder (Re=40)
 
-![translatingcylinder2dRe40_cd](runs/translatingcylinder2dRe40/figures/drag_coefficient.png)
+![translatingcylinder2dRe40_cd](runs/translatingcylinder2dRe40/figures/drag_coefficients.png)
 **Figure:** History of the drag coefficient of the impulsively started cylinder. Comparison with the analytical solution of Bar-Lev & Yang (1997) and the numerical results from Taira & Colonius (2007).
 
 ![translatingcylinder2dRe40_wz](runs/translatingcylinder2dRe40/dt=0.0005/figures/vorticity.png)
 **Figure:** Vorticity contours around the impulsively started circular cylinder at $t=1.0$ (left) and $t=3.5$ (right). Contour levels between $-3 \omega_z D / U_o$ and $3 \omega_z D / U_o$ with increments of $0.4$.
+
+![translatingcylinder2dRe40_lw](runs/translatingcylinder2dRe40/figures/recirculation_lengths.png)
+**Figure:** History of the recirculation length measured in the reference frame of the impulsively start cylinder at Reynolds number 40 and for different time-step sizes.
 
 ## Three-dimensional flow around an inline oscillating sphere ($Re=78.54$)
 
