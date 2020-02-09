@@ -1,3 +1,10 @@
+/**
+ * \file lietal2016.h
+ * \brief Definition of the class LietAl2016Solver.
+ * \copyright Copyright (c) 2019-2020, Olivier Mesnard. All rights reserved.
+ * \license BSD 3-Clause License.
+ */
+
 #pragma once
 
 #include <petibm/rigidkinematics/rigidkinematics.h>
@@ -27,6 +34,6 @@ protected:
     PetscErrorCode algorithm1();
     PetscErrorCode algorithm2();
     PetscErrorCode algorithm3();
-    PetscErrorCode writeForcesASCII_old();
+    PetscErrorCode writeForcesASCII();
 
 };  // LietAl2016Solver

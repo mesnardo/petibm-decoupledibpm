@@ -6,16 +6,19 @@ import pathlib
 
 import petibmpy
 
+import rodney
+
+
+args = rodney.parse_command_line()
 
 name = 'wz'  # name of the vorticity variable
-show_figure = True  # if True, display the figure
 
 # Set the simulation and data directories.
 simudir = pathlib.Path(__file__).absolute().parents[1]
-datadir = simudir / 'solution'
+datadir = simudir / 'output'
 
 # Load the gridlines from file.
-filepath = simudir / 'grid.h5'
+filepath = datadir / 'grid.h5'
 x, y = petibmpy.read_grid_hdf5(filepath, name)
 
 # Load the vorticity field at t=1.0.
@@ -27,7 +30,7 @@ filepath = datadir / 'cylinder_{:0>7}.2D'.format(timestep)
 xb1, yb1 = petibmpy.read_body(filepath, skiprows=1)
 
 # Load the vorticity field at t=3.5.
-timestep = 7000  # t = 1.0
+timestep = 7000  # t = 3.5
 filepath = datadir / '{:0>7}.h5'.format(timestep)
 wz2 = petibmpy.read_field_hdf5(filepath, name)
 # Load the body coordinates at the same time.
@@ -58,11 +61,12 @@ ax2.spines['right'].set_visible(False)
 ax2.spines['top'].set_visible(False)
 fig.tight_layout()
 
-# Save the figure.
-figdir = simudir / 'figures'
-figdir.mkdir(parents=True, exist_ok=True)
-filepath = figdir / 'vorticity.png'
-fig.savefig(filepath, dpi=300, bbox_inches='tight')
+if args.save_figures:
+    # Save the figure.
+    figdir = simudir / 'figures'
+    figdir.mkdir(parents=True, exist_ok=True)
+    filepath = figdir / f'vorticity.png'
+    fig.savefig(filepath, dpi=300, bbox_inches='tight')
 
-if show_figure:
+if args.show_figures:
     pyplot.show()

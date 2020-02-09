@@ -1,3 +1,10 @@
+/**
+ * \file dragonfly.cpp
+ * \brief Implementation of the class DragonflySolver.
+ * \copyright Copyright (c) 2019-2020, Olivier Mesnard. All rights reserved.
+ * \license BSD 3-Clause License.
+ */
+
 #include <iomanip>
 
 #include <petibm/io.h>

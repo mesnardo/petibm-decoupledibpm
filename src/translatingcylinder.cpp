@@ -1,3 +1,10 @@
+/**
+ * \file translatingcylinder.cpp
+ * \brief Implementation of the class TranslatingCylinderSolver.
+ * \copyright Copyright (c) 2019-2020, Olivier Mesnard. All rights reserved.
+ * \license BSD 3-Clause License.
+ */
+
 #include "translatingcylinder.h"
 
 #include <petibm/io.h>

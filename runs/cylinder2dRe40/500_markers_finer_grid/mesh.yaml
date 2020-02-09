@@ -1,0 +1,38 @@
+# 874x711 (621414)
+mesh:
+- direction: x
+  start: -15.0
+  subDomains:
+  - cells: 93
+    end: -3.3263598326
+    stretchRatio: 1.0
+  - cells: 63
+    end: -0.75
+    stretchRatio: 0.9523809524
+  - cells: 239
+    end: 0.75
+    stretchRatio: 1.0
+  - cells: 303
+    end: 12.9079497908
+    stretchRatio: 1.01
+  - cells: 176
+    end: 35.0
+    stretchRatio: 1.0
+- direction: y
+  start: -25.0
+  subDomains:
+  - cells: 173
+    end: -3.2845188285
+    stretchRatio: 1.0
+  - cells: 63
+    end: -0.75
+    stretchRatio: 0.9523809524
+  - cells: 239
+    end: 0.75
+    stretchRatio: 1.0
+  - cells: 63
+    end: 3.2845188285
+    stretchRatio: 1.05
+  - cells: 173
+    end: 25.0
+    stretchRatio: 1.0

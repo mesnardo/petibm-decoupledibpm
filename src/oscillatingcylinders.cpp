@@ -1,3 +1,10 @@
+/**
+ * \file oscillatingcylinders.cpp
+ * \brief Implementation of the class OscillatingCylindersSolver.
+ * \copyright Copyright (c) 2019-2020, Olivier Mesnard. All rights reserved.
+ * \license BSD 3-Clause License.
+ */
+
 #include "oscillatingcylinders.h"
 
 #include <petibm/io.h>

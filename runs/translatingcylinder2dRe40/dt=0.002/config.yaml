@@ -1,29 +1,41 @@
-# 559x374 (209066)
+# 503x352 (177056)
 mesh:
 - direction: x
   start: -16.5
   subDomains:
-  - cells: 128
+  - cells: 21
+    end: -8.1
+    stretchRatio: 1.0
+  - cells: 71
     end: -5.0
     stretchRatio: 0.9803921569
   - cells: 300
     end: 1.0
     stretchRatio: 1.0
-  - cells: 131
-    end: 13.5
+  - cells: 93
+    end: 6.3
     stretchRatio: 1.02
+  - cells: 18
+    end: 13.5
+    stretchRatio: 1.0
 - direction: y
   start: -15.0
   subDomains:
-  - cells: 137
+  - cells: 15
+    end: -9.0
+    stretchRatio: 1.0
+  - cells: 111
     end: -1.0
     stretchRatio: 0.9803921569
   - cells: 100
     end: 1.0
     stretchRatio: 1.0
-  - cells: 137
-    end: 15.0
+  - cells: 111
+    end: 9.0
     stretchRatio: 1.02
+  - cells: 15
+    end: 15.0
+    stretchRatio: 1.0
 
 flow:
   nu: 0.025
@@ -50,7 +62,7 @@ parameters:
   nrestart: 1750
   convection: ADAMS_BASHFORTH_2
   diffusion: CRANK_NICOLSON
-  delta: ROMA_ET_AL_1999
+  delta: PESKIN_2002
   lietal2016:
     algo: 3
     scheme: 3
@@ -71,3 +83,13 @@ bodies:
   kinematics:
     U0: -1.0
     V0: 0.0
+
+probes:
+- name: probe-u
+  type: VOLUME
+  field: u
+  viewer: hdf5
+  path: probe-u.h5
+  box:
+    x: [-4.0, 1.0]
+    y: [-0.5, 0.5]

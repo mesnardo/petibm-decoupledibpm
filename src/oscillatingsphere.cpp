@@ -1,3 +1,10 @@
+/**
+ * \file oscillatingsphere.cpp
+ * \brief Implementation of the class OscillatingSphereSolver.
+ * \copyright Copyright (c) 2019-2020, Olivier Mesnard. All rights reserved.
+ * \license BSD 3-Clause License.
+ */
+
 #include "oscillatingsphere.h"
 
 #include <petibm/io.h>

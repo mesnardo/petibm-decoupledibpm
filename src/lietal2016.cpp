@@ -1,3 +1,10 @@
+/**
+ * \file lietal2016.cpp
+ * \brief Implementation of the class LietAl2016Solver.
+ * \copyright Copyright (c) 2019-2020, Olivier Mesnard. All rights reserved.
+ * \license BSD 3-Clause License.
+ */
+
 #include "lietal2016.h"
 
 LietAl2016Solver::LietAl2016Solver(const MPI_Comm &world,
@@ -245,7 +252,7 @@ PetscErrorCode LietAl2016Solver::algorithm3()
     PetscFunctionReturn(0);
 }  // algorithm3
 
-PetscErrorCode LietAl2016Solver::writeForcesASCII_old()
+PetscErrorCode LietAl2016Solver::writeForcesASCII()
 {
     PetscErrorCode ierr;
     petibm::type::RealVec1D fAvg(3, 0.0);

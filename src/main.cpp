@@ -1,3 +1,10 @@
+/**
+ * \file main.cpp
+ * \brief Application driver for replication study on the decoupled IBPM.
+ * \copyright Copyright (c) 2019-2020, Olivier Mesnard. All rights reserved.
+ * \license BSD 3-Clause License.
+ */
+
 #include <petscsys.h>
 #include <yaml-cpp/yaml.h>
 

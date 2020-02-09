@@ -1,3 +1,10 @@
+/**
+ * \file oscillatingcylinders.h
+ * \brief Definition of the class OscillatingCylindersSolver.
+ * \copyright Copyright (c) 2019-2020, Olivier Mesnard. All rights reserved.
+ * \license BSD 3-Clause License.
+ */
+
 #pragma once
 
 #include "lietal2016.h"
